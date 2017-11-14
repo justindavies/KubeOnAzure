@@ -59,11 +59,6 @@ Location    Name
 uksouth     kubeonazure-backing
 ```
 
-And also a resource group for each Kubernetes cluster
-
-```
-
-```
 
 # Create Azure Container Registries
 To be able to takr advantage of the replicated registies, you will need to create an ACR instance under the Premium SKU
