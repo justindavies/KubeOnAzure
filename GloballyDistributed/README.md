@@ -35,7 +35,7 @@ A python script to stream tweets from the Twitter firehose that references the t
 ### Frontend
 A Ruby on Rails (RoR) web app to display the tweets from the local CosmosDB instance.
 
-![alt text](frontend_image.png "Proposed Architecture")
+![alt text](frontend_image.PNG "Proposed Architecture")
 
 # Pre-requisites
 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -467,7 +467,7 @@ deployment "streamer" created
 
 Take a look in the portal (Data Explorer) to check that Tweets are being saved
 
-![alt text](dataexplorer.png "Data Explorer")
+![alt text](dataexplorer.PNG "Data Explorer")
 
 ## Frontend
 The Frontend application is Ruby on Rails, using mongoid as the ODM driver.  
@@ -559,13 +559,13 @@ kubernetes   10.0.0.1     <none>         443/TCP        3h
 ## Create A record for Service Public IP address
 Login to the [portal](http://portal.azure.com) and goto "Public IP Addresses".
 
-![alt text](ipaddresses.png "IP Addresses")
+![alt text](ipaddresses.PNG "IP Addresses")
 
 You can tell the IP addresses in question as they will be the only ones listed in the portal in the Resource Group that are not the Kubernetes Masters.
 
 Select each IP address, and allocate an A record.
 
-![alt text](assignarecord.png "Assign A Record")
+![alt text](assignarecord.PNG "Assign A Record")
 
 Repeat for each Service address.
 
@@ -581,12 +581,12 @@ The final step is to now add the Service endpoint for each Frontend service glob
 
 Login to the [portal](http://portal.azure.com) again, and select your Traffic Manager instance.  Click on "Endpoints" and assign each Service IP address to the TM instance.
 
-![alt text](endpoint.png "Create Endpoint")
+![alt text](endpoint.PNG "Create Endpoint")
 
 # Test it!
 We've now set everything up to be able to test the Traffic Manager's global presence. In the case of this walkthrough, the URL for the Traffic Manager endpoint is [http://juda.trafficmanager.net/](http://juda.trafficmanager.net/)
 
-![alt text](tada.png "Tada!")
+![alt text](tada.PNG "Tada!")
 
 ## Create a CNAME to Traffic Manager
 
