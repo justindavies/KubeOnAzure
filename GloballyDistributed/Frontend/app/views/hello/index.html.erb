@@ -1,0 +1,13 @@
+<% for tweet in @tweets %>
+  <div class="mdl-card amazing mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title mdl-color-text--grey-50">
+      <h3 class="quote"><a href="entry.html"><%=tweet["text"] %> </a></h3>
+    </div>
+    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+      <div>
+        <strong><%= tweet["screen_name"] %></strong>
+        <span><%= time_ago_in_words(tweet["created_at"]) %> </span>
+      </div>
+    </div>
+  </div>
+<% end %>

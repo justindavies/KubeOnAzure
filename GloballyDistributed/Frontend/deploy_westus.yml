@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - image: judaregistry.azurecr.io/kubeonazure:frontend
+        name: frontend
+        ports:
+        - containerPort: 8080
+          name: frontend
+        imagePullPolicy: Always
+        
+        env:
+        - name: SECRET_KEY_BASE
+          value: kubeonazure
+        - name: RAILS_SERVE_STATIC_FILES
+          value: "true"
+        - name: GEOGRAPHY
+          value: "California"
+        - name: COSMOS_CONNECTION_STRING
+          value: mongodb://juda:DniE95rrmdCnZJRDZlpICl8Zz6oxgriM0sdoJSJTIsfH9K2acIAAxFnqinT9dEcRDJKHcrcrsh2RHzjPM2xJEA==@juda.documents.azure.com:10255/kubeonazure?ssl=true
+
+      imagePullSecrets:
+        - name: myregistrykey
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    tier: frontend
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+  type: LoadBalancer

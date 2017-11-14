@@ -1,0 +1,37 @@
+{
+    "apiVersion": "vlabs",
+    "properties": {
+      "orchestratorProfile": {
+        "orchestratorType": "Kubernetes"
+      },
+      "masterProfile": {
+        "count": 1,
+        "dnsPrefix": "juda",
+        "vmSize": "Standard_D2_v2"
+      },
+      "agentPoolProfiles": [
+        {
+            "name": "linuxpool1",
+            "count": 2,
+            "vmSize": "Standard_D2_v2",
+            "availabilityProfile": "AvailabilitySet",
+            "osType": "Linux"
+          }
+      ],
+
+      "linuxProfile": {
+        "adminUsername": "justin",
+        "ssh": {
+          "publicKeys": [
+            {
+              "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRD1FaMVv+nrOC+dRYCRsQCMvBz7wX8Skbu7EWPlscGW8fDeLb8Re7u9vMBjg3Zh22RYH8hDmyfc6Lu3n4UvJPBHRQXPELMCdWn6TA7502MiAF/3VnMOajNh+OEHD3Rce38ftWfkMFHrmlTucjZSZjo8ySNnSr7+h2vvFcXEEtu2+LrIeCrotU3l5KOIDgwSk+yJAfA5s/P/QD3zXQqKZCcuakSB1NxopkOlmwWavTxNfHQDGBn5erC1qF0kBHMJWD1XOu3xa8JygYDeb/Oo5i7Sgx4UwPuHpVficfXo+eIdTfruS0J4CHPKCoLQGdBKJQ2dgUwpH5ArT87FPgZ9ex justin@MININT-SK0C811"
+            }
+          ]
+        }
+      },
+      "servicePrincipalProfile": {
+        "clientId": "2ce010d6-57b0-48be-b874-f99faabc8341",
+        "secret": "deda51cb-05f1-4e84-a0aa-a46530663189"
+      }
+    }
+  }

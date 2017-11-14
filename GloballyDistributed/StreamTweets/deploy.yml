@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: streamer
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: ingest
+    spec:
+      containers:
+      - image: judaregistry.azurecr.io/kubeonazure:streamer
+        name: streamer
+        imagePullPolicy: Always
+        env:
+        - name: CONSUMER_KEY
+          value: TJBvTRxEGYZHsWnl75dnVusWy
+        - name: CONSUMER_SECRET
+          value: 8KuiDUHCwujQzOdDWTIia05oNx4iZOJV7DZSW2Y9SmdR86oXiR
+        - name: ACCESS_TOKEN
+          value: 6652682-M5by25xKzgDosIugrW9gnHtf58RZ43Oc3doGaUYe8H
+        - name: ACCESS_TOKEN_SECRET
+          value: A4yCOQtI3oXmjE5Qt8SxjPc29lm78mSWSjFne0Vevkx1d
+        - name: COSMOS_CONNECTION_STRING
+          value: mongodb://juda:DniE95rrmdCnZJRDZlpICl8Zz6oxgriM0sdoJSJTIsfH9K2acIAAxFnqinT9dEcRDJKHcrcrsh2RHzjPM2xJEA==@juda.documents.azure.com:10255/?ssl=true
+      imagePullSecrets:
+        - name: myregistrykey
+      nodeSelector:
+        beta.kubernetes.io/os: linux
